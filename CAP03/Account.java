@@ -29,6 +29,10 @@ public class Account {
     public double getBalance(){
         return this.balance;
     }
+
+    public void withdral(double amount){
+        this.balance = this.balance >= amount ? this.balance - amount : this.balance;
+    }
     
      
 } // Fim da classe

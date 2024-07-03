@@ -11,12 +11,8 @@ public class AccountTest { // Classe Driver (Condutora)
         Account account1 = new Account("Lucas Barbosa", 50.00);
         Account account2 = new Account("Luiz Fernando", -7.53);
         
-
         // Exibe o saldo inicial de cada objeto
-        System.out.printf("%s balance: $%.2f %n", 
-            account1.getName(), account1.getBalance());
-        System.out.printf("%s balance: $%.2f %n", 
-            account2.getName(), account2.getBalance());
+        System.out.print(viewAccounts(account1, account2));
 
         System.out.print("Enter deposit amount for account1: ");
         double depositAmount = input.nextDouble();
@@ -24,10 +20,7 @@ public class AccountTest { // Classe Driver (Condutora)
         account1.deposit(depositAmount);
 
         // Exiba os saldos
-        System.out.printf("%s balance: $%.2f%n", 
-            account1.getName(), account1.getBalance());
-        System.out.printf("%s balance: $%.2f%n", 
-            account2.getName(), account2.getBalance());
+        System.out.print(viewAccounts(account1, account2));
 
         System.out.print("Enter deposit amount for account2: ");
         depositAmount = input.nextDouble();
@@ -35,13 +28,25 @@ public class AccountTest { // Classe Driver (Condutora)
         account2.deposit(depositAmount);
 
         // Exiba os saldos
-        System.out.printf("%s balance: $%.2f%n", 
-            account1.getName(), account1.getBalance());
-        System.out.printf("%s balance: $%.2f%n", 
-            account2.getName(), account2.getBalance());
+        System.out.println(viewAccounts(account1, account2));
+
+        // Faz um saque nas duas contas
+        account1.withdral(20);
+        account2.withdral(45.23);
+
+         // Exiba os saldos
+         System.out.print(viewAccounts(account1, account2));
 
         input.close();
 
     } // Fim do método main
 
+
+
+    // Criação do método viewAccounts
+    public static String viewAccounts(Account ac1, Account ac2){
+        return String.format("%s balance: $%.2f %n%s balance: $%.2f %n", 
+            ac1.getName(), ac1.getBalance(), 
+            ac2.getName(), ac2.getBalance());
+    }// Fim do método viewAccounts
 } // Fim da classe AccountTeste
